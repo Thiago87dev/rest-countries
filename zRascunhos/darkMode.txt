@@ -1,0 +1,22 @@
+'use client'
+import { useState } from 'react';
+
+function App() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    document.documentElement.classList.toggle('dark', !darkMode);
+  };
+
+  return (
+    <div className="min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white">
+      <button onClick={toggleDarkMode} className="p-2 bg-gray-300 dark:bg-gray-700 rounded">
+        Alternar Tema
+      </button>
+      <p>Este é um exemplo de Dark Mode com Tailwind CSS.</p>
+    </div>
+  );
+}
+
+export default App;
