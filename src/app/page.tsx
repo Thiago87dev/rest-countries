@@ -1,36 +1,35 @@
-
-import fs from "fs";
-import path from "path";
-
-import Item from "@/components/Item";
+"use client";
 import { CountryProps } from "@/types";
 import FormSearch from "@/components/FormSearch";
-
+import { useEffect, useState } from "react";
+import Pagination from "@/components/Pagination";
 
 export default function Home() {
-  const filePath = path.join(process.cwd(), "data.json");
-  const data: CountryProps[] = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+  const [data, setData] = useState<CountryProps[]>([]);
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/data.json");
+        const result = await response.json();
+        setData(result);
+      } catch (error) {
+        console.error("Erro ao buscar dados", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
-    <div>
+    <div >
       <div className="py-10">
-        <FormSearch/>
-        <div className="py-14 flex gap-16 flex-wrap">
-          {data.map((country) => (
-            <div key={country?.name}>
-              <Item
-                item={{
-                  flag: country?.flag,
-                  name: country?.name,
-                  population: country?.population,
-                  region: country?.region,
-                  capital: country?.capital,
-                }}
-              />
-            </div>
-          ))}
-        </div>
+        <FormSearch />
       </div>
+      <div>
+        <Pagination data={data}/>
+      </div>
+      
     </div>
   );
 }
