@@ -25,7 +25,7 @@ export default function Home() {
   // Filtrar os países pelo termo da busca
   const filteredCountries = countries.filter((country) =>
     country.name.toLowerCase().includes(searchTerm.toLowerCase())
-  ); // Se searchTerm for vazio, a lista filteredCountries terá todos os paises.
+  ); 
 
   // Paginação
   const totalPages = Math.ceil(filteredCountries.length / itemsPerPage);

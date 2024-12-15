@@ -1,12 +1,10 @@
 import { useState } from "react";
-import { CountryProps } from "@/types";
 import Item from "@/components/Item";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
-interface DataProps {
-  data: CountryProps[];
-}
-
-const Pagination = ({ data }: DataProps) => {
+const Pagination = () => {
+  const data = useSelector((state: RootState) => state.data.filteredData);
   //pagination
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
