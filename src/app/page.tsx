@@ -6,6 +6,7 @@ import { useEffect } from "react";
 // Redux
 import { useDispatch } from "react-redux";
 import { setData } from "@/redux/data/slice";
+import Filter from "@/components/Filter";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -25,8 +26,13 @@ export default function Home() {
 
   return (
     <div>
-      <div className="py-10">
-        <FormSearch />
+      <div className="flex items-center justify-between py-10">
+        <div>
+          <FormSearch />
+        </div>
+        <div>
+          <Filter/>
+        </div>
       </div>
       <div>
         <Pagination />
