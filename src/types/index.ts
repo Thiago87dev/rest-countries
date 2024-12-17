@@ -25,14 +25,12 @@ export interface CountryProps {
     name: string;
     symbol: string;
   }[];
-  languages: [
-    {
-      iso639_1: string;
-      iso639_2: string;
-      name: string;
-      nativeName: string;
-    }[]
-  ];
+  languages: {
+    iso639_1: string;
+    iso639_2: string;
+    name: string;
+    nativeName: string;
+  }[];
   translations: {
     br: string;
     pt: string;
@@ -56,9 +54,10 @@ export interface CountryProps {
 }
 
 export interface ItemProps {
-    flag: string
-    name: string
-    population: number
-    region: string
-    capital: string
+  flag: string;
+  name: string;
+  population: number;
+  region: string;
+  capital: string;
+  alpha3Code: string;
 }

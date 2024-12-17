@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ItemProps } from "@/types";
+import Link from "next/link";
 
 interface ItemComponentProps {
   item: ItemProps;
@@ -9,6 +10,7 @@ const Item = ({ item }: ItemComponentProps) => {
   return (
     <div>
       <div>
+        <Link href={`/countryDetail/${item.alpha3Code}`}>
         <Image
           className="rounded-t-md "
           alt="bandeira"
@@ -16,6 +18,7 @@ const Item = ({ item }: ItemComponentProps) => {
           width={245}
           height={245}
         />
+        </Link>
       </div>
       <div className="dark:text-colorWhite flex flex-col w-[245px] gap-4 drop-shadow-md bg-colorWhite dark:bg-colorDarkBlue rounded-b-md">
         <div className="flex flex-col gap-4 p-6 pb-10">

@@ -36,6 +36,7 @@ const Pagination = () => {
                   population: country?.population,
                   region: country?.region,
                   capital: country?.capital,
+                  alpha3Code: country?.alpha3Code
                 }}
               />
             </div>
