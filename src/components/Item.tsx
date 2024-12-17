@@ -11,23 +11,25 @@ const Item = ({ item }: ItemComponentProps) => {
     <div>
       <div>
         <Link href={`/countryDetail/${item.alpha3Code}`}>
-        <Image
-          className="rounded-t-md "
-          alt="bandeira"
-          src={item.flag }
-          width={245}
-          height={245}
-        />
+          <Image
+            className="rounded-t-md "
+            alt="bandeira"
+            src={item.flag}
+            width={245}
+            height={245}
+          />
         </Link>
       </div>
       <div className="dark:text-colorWhite flex flex-col w-[245px] gap-4 drop-shadow-md bg-colorWhite dark:bg-colorDarkBlue rounded-b-md">
         <div className="flex flex-col gap-4 p-6 pb-10">
-          <h1 className="text-xl font-bold">{item.name}</h1>
+          <Link href={`/countryDetail/${item.alpha3Code}`}>
+            <h1 className="text-xl font-bold">{item.name}</h1>
+          </Link>
           <div className="flex flex-col text-sm gap-1 font-semibold">
             <p>
               Population:
               <span className="pl-1 font-normal  dark:text-colorVeryLightGray">
-                {item.population.toLocaleString('pt-BR')}
+                {item.population.toLocaleString("pt-BR")}
               </span>
             </p>
             <p>
