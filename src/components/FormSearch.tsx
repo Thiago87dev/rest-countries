@@ -17,7 +17,7 @@ const FormSearch = () => {
       <input
         onChange={handleSearch}
         type="text"
-        className="dark:bg-colorDarkBlue py-4 rounded-md w-[426px] px-16 dark:text-colorWhite bg-colorWhite placeholder-colorVeryDarkBlue dark:placeholder-colorWhite text-colorVeryDarkBlue drop-shadow-md"
+        className="dark:bg-colorDarkBlue py-4 rounded-md w-[310px] sm:w-[354px] md:w-[426px] px-16 dark:text-colorWhite bg-colorWhite placeholder-colorVeryDarkBlue dark:placeholder-colorWhite text-colorVeryDarkBlue drop-shadow-md"
         placeholder="Search for a country..."
       />
       <div className="absolute text-colorVeryDarkBlue dark:text-colorWhite inset-y-0 flex items-center left-7">

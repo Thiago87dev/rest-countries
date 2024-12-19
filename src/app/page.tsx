@@ -26,7 +26,7 @@ export default function Home() {
 
   return (
     <div>
-      <div className="flex items-center justify-between py-10">
+      <div className="flex flex-col gap-8 md:gap-0 items-start md:flex-row px-[10px] md:px-0 md:items-center justify-between py-10">
         <div>
           <FormSearch />
         </div>

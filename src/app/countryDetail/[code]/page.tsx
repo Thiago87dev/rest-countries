@@ -13,7 +13,7 @@ const CountryDetail = () => {
     (country) => country.alpha3Code === code
   );
   return (
-    <div className="my-20">
+    <div className="my-20 px-4 md:px-0">
       <div className="flex flex-col">
         <div>
           <Link href={"/"}>
@@ -24,7 +24,7 @@ const CountryDetail = () => {
         </div>
         {filteredCountry.map((country) => (
           <div
-            className="flex justify-between items-center mt-20"
+            className="flex flex-col xl:flex-row justify-between  items-start xl:items-center mt-20"
             key={country.alpha3Code}
           >
             <div>
@@ -35,11 +35,11 @@ const CountryDetail = () => {
                 height={560}
               />
             </div>
-            <div className="flex flex-col gap-10 dark:text-colorWhite text-colorVeryDarkBlue w-[40%]">
-              <div>
+            <div className="flex flex-col gap-10  dark:text-colorWhite text-colorVeryDarkBlue w-full md:w-[40%]">
+              <div className="mt-20">
                 <h1 className="font-bold text-3xl">{country.name}</h1>
               </div>
-              <div className="flex gap-10">
+              <div className="flex flex-col md:flex-row gap-10">
                 <div className="flex flex-col gap-2">
                   <p>
                     <span className="font-semibold mr-2">Native Name:</span>
@@ -84,7 +84,7 @@ const CountryDetail = () => {
                   </div>
                 </div>
               </div>
-              <div className={`flex ${country.borders && country.borders.length > 3 ? 'items-start': 'items-center' } text-sm`}>
+              <div className={`flex  w-full ${country.borders && country.borders.length > 3 ? 'items-start': 'items-center' } text-sm`}>
                 {country.borders && <span className="font-semibold mr-2">Border Countries:</span>}
                 <div className="flex gap-2 flex-wrap">
                   {country.borders &&

@@ -24,7 +24,7 @@ const Pagination = () => {
 
   return (
     <div>
-      <div className="py-14 flex gap-16 flex-wrap min-h-[960px]">
+      <div className="py-14 flex gap-10 justify-center px-6 md:px-0 md:justify-between flex-wrap min-h-[960px]">
         {currentItems
           .sort((a, b) => a.name.localeCompare(b.name))
           .map((country) => (
@@ -42,11 +42,11 @@ const Pagination = () => {
             </div>
           ))}
       </div>
-      <div className="my-10 flex items-center justify-center gap-12 w-[620px] mx-auto dark:text-colorWhite">
+      <div className="my-10 flex items-center justify-center gap-12 w-fit md:w-[620px] mx-auto dark:text-colorWhite">
         <button
           onClick={() => handlePageChange(1)}
           disabled={currentPage === 1}
-          className="px-4 py-2 bg-blue-500 text-white rounded disabled:bg-gray-300"
+          className="hidden md:block px-4 py-2 bg-blue-500 text-white rounded disabled:bg-gray-300"
         >
           First
         </button>
@@ -57,7 +57,7 @@ const Pagination = () => {
         >
           Previous
         </button>
-        <span>
+        <span className="hidden md:block">
           Page {currentPage} of {totalPages}
         </span>
         <button
@@ -72,7 +72,7 @@ const Pagination = () => {
         <button
           onClick={() => handlePageChange(totalPages)}
           disabled={currentPage === totalPages}
-          className="px-4 py-2 bg-blue-500 text-white rounded disabled:bg-gray-300"
+          className="hidden md:block px-4 py-2 bg-blue-500 text-white rounded disabled:bg-gray-300"
         >
           Last
         </button>
