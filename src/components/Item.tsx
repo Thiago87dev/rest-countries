@@ -1,18 +1,25 @@
 import Image from "next/image";
 import { ItemProps } from "@/types";
 import Link from "next/link";
+import { useDispatch } from "react-redux";
+import { setSearchText, setSelectedRegion } from "@/redux/data/slice";
 
 interface ItemComponentProps {
   item: ItemProps;
 }
 
 const Item = ({ item }: ItemComponentProps) => {
+  const dispatch = useDispatch()
+  const handleDetailClick = () => {
+    dispatch(setSearchText(''))
+    dispatch(setSelectedRegion(''))
+  }
   return (
     <div>
-      <div>
+      <div onClick={handleDetailClick}>
         <Link href={`/countryDetail/${item.alpha3Code}`}>
           <Image
-            className="rounded-t-md "
+            className="rounded-t-md w-[245px] h-[140px] object-cover"
             alt="bandeira"
             src={item.flag}
             width={245}
@@ -21,7 +28,7 @@ const Item = ({ item }: ItemComponentProps) => {
         </Link>
       </div>
       <div className="dark:text-colorWhite flex flex-col w-[245px] gap-4 drop-shadow-md bg-colorWhite dark:bg-colorDarkBlue rounded-b-md">
-        <div className="flex flex-col gap-4 p-6 pb-10">
+        <div onClick={handleDetailClick} className="flex flex-col gap-4 p-6 pb-10">
           <Link href={`/countryDetail/${item.alpha3Code}`}>
             <h1 className="text-xl font-bold">{item.name}</h1>
           </Link>

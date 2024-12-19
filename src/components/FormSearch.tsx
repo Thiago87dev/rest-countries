@@ -4,13 +4,13 @@ import { FaSearch } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { setSearchText } from "@/redux/data/slice";
 
-const FormSearch = () => {
 
+const FormSearch = () => {
   const dispatch = useDispatch();
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(setSearchText(e.target.value))
-  }
+    dispatch(setSearchText(e.target.value));
+  };
 
   return (
     <form className="relative">
