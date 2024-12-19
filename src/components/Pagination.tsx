@@ -1,6 +1,6 @@
 import Item from "@/components/Item";
 import { useSelector, useDispatch } from "react-redux";
-import {setCurrentPage} from '@/redux/data/slice'
+import { setCurrentPage } from "@/redux/data/slice";
 import { RootState } from "@/redux/store";
 
 const Pagination = () => {
@@ -18,9 +18,7 @@ const Pagination = () => {
 
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
-  const handlePageChange = (page: number) => [
-    dispatch(setCurrentPage(page))
-  ]
+  const handlePageChange = (page: number) => [dispatch(setCurrentPage(page))];
 
   return (
     <div>
@@ -28,7 +26,7 @@ const Pagination = () => {
         {currentItems
           .sort((a, b) => a.name.localeCompare(b.name))
           .map((country) => (
-            <div key={country?.name}>
+            <div className="select-none" key={country?.name}>
               <Item
                 item={{
                   flag: country?.flag,
@@ -36,7 +34,7 @@ const Pagination = () => {
                   population: country?.population,
                   region: country?.region,
                   capital: country?.capital,
-                  alpha3Code: country?.alpha3Code
+                  alpha3Code: country?.alpha3Code,
                 }}
               />
             </div>
@@ -61,9 +59,7 @@ const Pagination = () => {
           Page {currentPage} of {totalPages}
         </span>
         <button
-          onClick={() =>
-            handlePageChange(currentPage + 1)
-          }
+          onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
           className="px-4 py-2 bg-blue-500 text-white rounded disabled:bg-gray-300"
         >

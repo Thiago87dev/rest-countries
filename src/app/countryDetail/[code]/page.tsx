@@ -13,11 +13,11 @@ const CountryDetail = () => {
     (country) => country.alpha3Code === code
   );
   return (
-    <div className="my-20 px-4 md:px-0">
+    <div className="my-20 px-4 md:px-0 ">
       <div className="flex flex-col">
         <div>
           <Link href={"/"}>
-            <button className="flex  items-center gap-2 bg-colorWhite text-colorVeryDarkBlue dark:text-colorWhite dark:bg-colorDarkBlue px-10 py-2 rounded-md drop-shadow-lg active:scale-95">
+            <button className="flex select-none items-center gap-2 bg-colorWhite text-colorVeryDarkBlue dark:text-colorWhite dark:bg-colorDarkBlue px-10 py-2 rounded-md drop-shadow-lg active:scale-95">
               <FaArrowLeftLong size={20} /> Back
             </button>
           </Link>
@@ -27,7 +27,7 @@ const CountryDetail = () => {
             className="flex flex-col xl:flex-row justify-between  items-start xl:items-center mt-20"
             key={country.alpha3Code}
           >
-            <div>
+            <div className="select-none">
               <Image
                 alt="flag"
                 src={`${country.flag}`}
@@ -84,19 +84,21 @@ const CountryDetail = () => {
                   </div>
                 </div>
               </div>
-              <div className={`flex  w-full ${country.borders && country.borders.length > 3 ? 'items-start': 'items-center' } text-sm`}>
+              <div className={`select-none flex flex-col md:flex-row gap-3 md:gap-0  w-full ${country.borders && country.borders.length > 3 ? 'items-start': 'items-start md:items-center' } text-sm`}>
                 {country.borders && <span className="font-semibold mr-2">Border Countries:</span>}
                 <div className="flex gap-2 flex-wrap">
                   {country.borders &&
                     country.borders.map((border, index) => {
                       const borderCountry = countries.find((c) => c.alpha3Code === border)
                       return (
+                        <Link href={`/countryDetail/${borderCountry?.alpha3Code}`} key={index}>
                         <p
                           className="flex rounded-md dark:bg-colorDarkBlue py-1 px-6 gap-1"
-                          key={index}
+                          
                         >
                           {borderCountry?.name}
                         </p>
+                        </Link>
                       );
                     })}
                 </div>
