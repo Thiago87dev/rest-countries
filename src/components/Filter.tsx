@@ -1,15 +1,22 @@
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSelectedRegion } from "@/redux/data/slice";
 import { IoClose } from "react-icons/io5";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { RootState } from "@/redux/store";
 
 const Filter = () => {
+  const selectdRegion = useSelector((state: RootState) => state.data.selectedRegion)
+
   const continents = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
-  const [selectedContinent, setSelectedContinent] = useState("");
+  const [selectedContinent, setSelectedContinent] = useState(selectdRegion);
 
   const dispatch = useDispatch();
+
+  useEffect(()=>{
+    setSelectedContinent(selectdRegion)
+  },[selectdRegion])
 
   const handleFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     dispatch(setSelectedRegion(e.target.value));

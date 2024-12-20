@@ -45,7 +45,7 @@ const Pagination = () => {
 
   return (
     <div>
-      <div className="py-14 flex gap-10 justify-center px-6 md:px-0 md:justify-between flex-wrap min-h-[960px]">
+      <div className={`py-14 flex gap-10 justify-center px-6 md:px-0 ${currentItems.length < 4 ? 'md:justify-start': 'md:justify-between'}  flex-wrap min-h-[960px]`}>
         {currentItems
           .sort((a, b) => a.name.localeCompare(b.name))
           .map((country) => (

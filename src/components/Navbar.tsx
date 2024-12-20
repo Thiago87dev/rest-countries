@@ -6,6 +6,7 @@ import { toggleDarkModeRedux } from "@/redux/darkMode/slice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import Link from "next/link";
+import { useEffect } from "react";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,14 @@ const Navbar = () => {
   const toggleDarkMode = () => {
     dispatch(toggleDarkModeRedux());
   };
+
+  useEffect(()=>{
+    if(darkMode){
+      document.documentElement.classList.add("dark")
+    } else {
+      document.documentElement.classList.remove("dark")
+    }
+  },[darkMode])
   return (
     <div className="w-full px-3 md:px-32 py-6 bg-colorWhite text-colorVeryDarkBlue dark:text-colorWhite dark:bg-colorDarkBlue">
       <div className="flex justify-between">

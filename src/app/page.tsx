@@ -4,25 +4,29 @@ import FormSearch from "@/components/FormSearch";
 import Pagination from "@/components/Pagination";
 import { useEffect } from "react";
 // Redux
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setData } from "@/redux/data/slice";
 import Filter from "@/components/Filter";
+import { RootState } from "@/redux/store";
 
 export default function Home() {
   const dispatch = useDispatch();
+  const data = useSelector((state: RootState) => state.data.data);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/data.json");
-        const result = await response.json();
-        dispatch(setData(result));
+        if (data.length === 0) {
+          const response = await fetch("/data.json");
+          const result = await response.json();
+          dispatch(setData(result));
+        }
       } catch (error) {
         console.error("Erro ao buscar dados", error);
       }
     };
     fetchData();
-  }, [dispatch]);
+  }, [dispatch, data]);
 
   return (
     <div>
@@ -31,7 +35,7 @@ export default function Home() {
           <FormSearch />
         </div>
         <div>
-          <Filter/>
+          <Filter />
         </div>
       </div>
       <div>
