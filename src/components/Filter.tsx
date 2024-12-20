@@ -1,4 +1,3 @@
-"use client";
 
 import { useDispatch } from "react-redux";
 import { setSelectedRegion } from "@/redux/data/slice";

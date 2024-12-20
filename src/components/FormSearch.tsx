@@ -1,4 +1,3 @@
-"use client";
 
 import { FaSearch } from "react-icons/fa";
 import { useDispatch } from "react-redux";

@@ -2,15 +2,38 @@ import Item from "@/components/Item";
 import { useSelector, useDispatch } from "react-redux";
 import { setCurrentPage } from "@/redux/data/slice";
 import { RootState } from "@/redux/store";
+import { useEffect, useState } from "react";
 
 const Pagination = () => {
+  const [itemsPerPage, setItemsPerPage] = useState(8);
+
+  useEffect(()=>{
+    const updateItensPerPage = () => {
+      if(window.innerWidth >= 1071 && window.innerWidth <= 1355) {
+        setItemsPerPage(9)
+      } else if (window.innerWidth >= 1356 && window.innerWidth <= 1640) {
+        setItemsPerPage(8)
+      } else if (window.innerWidth >= 1641) {
+        setItemsPerPage(10)
+      } else {
+        setItemsPerPage(8)
+      }
+    }
+    updateItensPerPage()
+
+    window.addEventListener("resize", updateItensPerPage)
+
+    return () => {
+      window.removeEventListener("resize", updateItensPerPage)
+    }
+  },[])
+
   const dispatch = useDispatch();
 
   const data = useSelector((state: RootState) => state.data.filteredData);
   const currentPage = useSelector((state: RootState) => state.data.currentPage);
 
   //pagination
-  const itemsPerPage = 8;
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
