@@ -2,11 +2,13 @@
 import { FaMoon } from "react-icons/fa";
 import { FaSun } from "react-icons/fa";
 
+import { useEffect } from "react";
+import Link from "next/link";
+
+import { setSearchText, setSelectedRegion, setCurrentPage } from "@/redux/data/slice";
 import { toggleDarkModeRedux } from "@/redux/darkMode/slice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
-import Link from "next/link";
-import { useEffect } from "react";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -23,9 +25,16 @@ const Navbar = () => {
       document.documentElement.classList.remove("dark")
     }
   },[darkMode])
+
+  const handleHomeClick = () => {
+    dispatch(setSearchText(''))
+    dispatch(setSelectedRegion(''))
+    dispatch(setCurrentPage(1))
+  }
+
   return (
     <div className="w-full px-3 md:px-32 py-6 bg-colorWhite text-colorVeryDarkBlue dark:text-colorWhite dark:bg-colorDarkBlue">
-      <div className="flex justify-between">
+      <div onClick={handleHomeClick} className="flex justify-between">
         <Link href="/">
           <h1 className="font-extrabold  md:text-2xl">Where in the world?</h1>
         </Link>
