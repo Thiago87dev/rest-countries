@@ -34,9 +34,9 @@ const Navbar = () => {
 
   return (
     <div className="w-full px-3 md:px-32 py-6 bg-colorWhite text-colorVeryDarkBlue dark:text-colorWhite dark:bg-colorDarkBlue">
-      <div onClick={handleHomeClick} className="flex justify-between">
+      <div  className="flex justify-between">
         <Link href="/">
-          <h1 className="font-extrabold  md:text-2xl">Where in the world?</h1>
+          <h1 onClick={handleHomeClick} className="font-extrabold  md:text-2xl">Where in the world?</h1>
         </Link>
         <div className="flex items-center gap-2 select-none">
           <div onClick={toggleDarkMode} className="cursor-pointer">
